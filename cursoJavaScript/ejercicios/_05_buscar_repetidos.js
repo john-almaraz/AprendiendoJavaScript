@@ -12,6 +12,17 @@ miFuncion("hola mundo adios mundo", "mundo") devolverá 2.
  */
 const buscarRepetidos=(cadena,busqueda)=>{
     let count = 0
-    const regex = new RegExp(busqueda,"")
+    let pos = 0
+    do{
+        pos = cadena.indexOf(busqueda,pos)
+        if(pos >= 0){
+            count++
+            pos++
+        }
+    }while(pos != -1);
     return count
 }
+
+let cadena = "Esta es una cadena de prueba"
+let busqueda = "de"
+console.log(buscarRepetidos(cadena,busqueda))
