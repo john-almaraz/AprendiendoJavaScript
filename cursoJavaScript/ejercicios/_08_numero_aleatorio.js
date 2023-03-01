@@ -18,11 +18,3 @@ const numRandom = (numStart=1,numEnd=100)=>
 (Math.floor(Math.random()*(numEnd-numStart+1)+numStart));
 
 console.log(numRandom(1,5))
-
-
-/*
-for(let i = 0; i<17;i++){
-    console.log(numRandom('gTO',null))
-}
-*/
-
