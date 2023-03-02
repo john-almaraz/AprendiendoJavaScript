@@ -22,6 +22,7 @@ Romance, Sci-Fi, Short, Sport, Talk-Show, Thriller, War, Western.
 */
 
 class Pelicula{
+    
     /**
      * Metodo Constructor
      * 
@@ -34,13 +35,50 @@ class Pelicula{
      * @param {number} calificacion - calificacion de la pelicula (0-10) zero siendo mala y 10 muy buena
      */
     constructor(id,titulo,director,fechaEstreno,pais,generos,calificacion){
-        this.id = id
-        this.titulo = titulo
-        this.director = director
-        this.fechaEstreno = fechaEstreno
-        this.pais = pais
-        this.generos = generos
-        this.calificacion = calificacion
+        this.setId = id
+        this.setTitulo = titulo
+        this.setDirector = director
+        this.setFechaEstreno = fechaEstreno
+        this._pais = pais
+        this._generos = generos
+        this.setCalificacion = calificacion        
+    }  
+
+    //METODOS SET
+    set setId(id){
+        if(this.#validarID(id)){
+            this._id = id;
+        }else{
+            throw new FormatException('El id debe tener 2 letras mayusculas seguido de 7 valores numericos, formato esperado: AB1234567')
+        }
+    }
+    set setTitulo(titulo){
+        if(this.#validarTitulo(titulo)){
+            this._titulo = titulo
+        }else{
+            throw new FormatException('El titulo debe tener (1-100) caracteres alfabeticos')
+        }
+    }
+    set setDirector(director){
+        if(this.#validarDirector(director)){
+            this._director = director
+        }else{
+            throw new FormatException('El director debe tener (1-50) caracteres alfabeticos')
+        }
+    }
+    set setFechaEstreno(fechaEstreno){
+        if(this.#validarFecha(fechaEstreno)){
+            this._fechaEstreno = fechaEstreno
+        }else{
+            throw new FormatException('Error de formato de fecha, formato esperado: dd/MM/aaaa')
+        }
+    }
+    set setCalificacion(calificacion){
+        if(this.#validarCalificacion(calificacion)){
+            this._calificacion = calificacion
+        }else{
+            throw new FormatException('La putuacion debe estar en un rango de (0-10) con opcion a tener un decimal')
+        }
     }
 
     /**
@@ -56,7 +94,6 @@ class Pelicula{
         return generos.match(regex)    
     }
 
-
     /**
      * Este metodo evalua si el nombre de un director cumple la normativa de empresa.
      *  - Debe ser unicamente alfabetico
@@ -65,20 +102,20 @@ class Pelicula{
      * @param {string} director - nombre del director de la pelicula
      * @returns {boolean} 
      */
-    validarDirector(director){
-        let regex = /^[A-z]{1,50}$/
+    #validarDirector(director){
+        let regex = /^[A-z\ ]{1,50}$/
         return regex.test(director)
     }
 
     /**
      * Este metodo evalua si un titulo cumple la normativa de empresa.
-     *  - Debe ser unicamente alfabetico
+     *  - Debe ser alfabetico
      *  - Debe tener (1 - 100) caracteres 
      * @param {string} titulo - titulo de la pelicula
      * @returns {boolean} 
      */
-    validarTitulo(titulo){
-        let regex = /^[A-z]{1,100}$/
+    #validarTitulo(titulo){
+        let regex = /^[A-z\ ]{1,100}$/
         return regex.test(titulo)
     }
 
@@ -89,19 +126,19 @@ class Pelicula{
      * @param {string} id - codigo identificador
      * @returns {boolean} true si el codigo es correcto y false en caso contrario
      */
-    validarID(id){
+    #validarID(id){
         let regex = /^[A-Z]{2}\d{7}$/
         return regex.test(id)
     }
+
     /**
      * Este metodo valida que una fecha cumpla la normativa de empresa.
      *  - Formato (dd/MM/aaaa)
-     *  - La fecha de estreno no debe ser superior a la fecha actual
-     * 
+     *  
      * @param {string} fecha - fecha (dd/MM/aaaa)
      * @returns {boolean} - retorna true si la fecha es correcta y false en caso contrario.
      */
-    validarFecha(fecha){
+    #validarFecha(fecha){
         let regex = /^\d{1,2}\/\d{1,2}\/\d{4}$/
         if(regex.test(fecha)){
             return true
@@ -118,7 +155,7 @@ class Pelicula{
      * @param {Number} calificacion - (0-10) pudiendo tener 1 decimal 
      * @returns {boolean} true si cumple la normativa de empresa y false en caso contrario
      */
-    validarCalificacion (calificacion=''){
+    #validarCalificacion (calificacion=''){
         let cal = calificacion.toString()
         let regex =/^[0-9]{1}\.[0-9]{1}$|10$|^[0-9]{1}$/
         return regex.test(cal)
@@ -129,8 +166,24 @@ class Pelicula{
      * @returns {string} la ficha tecnica de una pelicula con formato
      */
     getInfo(){
-        
+        let info = `ID: ${this._id}\nPelicula: ${this._titulo}\nDirector: ${this._director}`+
+        `\nFecha de estreno: ${this._fechaEstreno}\nPais de origen: ${this._pais}`+
+        `\nGenero: ${this._generos}\nCalificacion global: ${this._calificacion}`
+        return info
     }
     
 }
+/**
+ * Excepcion de formato incorrecto
+ */
+class FormatException extends Error{
+    constructor(msg){
+        super(msg)
+        this.name ='FormatException'
+    }
+}
+let peli = new Pelicula('AB1524568','Harry Potter','Vin Diesel','25/08/2005','EEUU',['Fantasy','Comedy'],1)
+
+console.log(peli)
+console.log(peli.getInfo())
 
