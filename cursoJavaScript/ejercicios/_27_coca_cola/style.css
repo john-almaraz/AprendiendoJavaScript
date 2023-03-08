@@ -1,0 +1,80 @@
+body{
+    background: black;
+}
+.title{
+    color: azure;
+    text-align: center;
+    font-size: 40px;   
+    margin: 2px;
+    padding: 5px;
+    border-radius: 50px; 
+    background-color: rgb(51, 117, 238);
+}
+.left{
+    color: beige;
+    font-size: 30px;
+    width: 61%;
+    float: left;
+}
+.main{
+    background-color: rgb(26, 82, 201);
+    width: 700px;
+    height: 900px;
+    margin: auto;
+    border-radius: 50px;
+}
+hr{
+    height: 640px;
+    margin-left: 5px;
+    width: 2px;
+    border-width:0;
+    color:#000;
+    background-color:#ffffff;      
+}
+img{
+    width: 90px;
+    height: 200px;
+    margin: 10px;
+}
+.title img{
+    width: 600px;
+}
+.rigth{
+    margin-top: -600px;
+    float: right;
+    width: 36%;
+}
+
+button{
+    margin: 15px;
+    width: 90px;
+    height: 35px;
+    border-radius: 20px;
+}
+
+.caja-negra{
+    margin: -10px -5px 5px 11px;
+    padding: 1px;
+    border-radius: 30px;
+    width: 400px;
+    height: 100px;
+    background-color: #000000;
+    float: left;
+}
+table, th{
+    color: beige;
+    font-size: 20px;
+    width: 240px;
+    border: solid #000;
+    border-collapse: collapse;
+}
+tbody{
+    height: 150px;
+    text-align: justify;
+    vertical-align: top;
+    overflow: scroll;
+}
+.pagar{
+    width: 205px;
+    height: 60px;
+}
