@@ -1,0 +1,22 @@
+button{
+  width: 250px;
+  height: 80px;
+  font-size: 25px;
+  font-family: 'Playfair Display', serif;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  border: 3px solid rgb(0, 0, 0);
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 25px;
+}
+
+button:hover{
+  background-color: rgb(68, 192, 44);
+}
+.button-click{
+  background-color:rgb(16, 0, 107) ;
+}
+.button-reset{
+  background-color: rgb(70, 2, 64);
+}
