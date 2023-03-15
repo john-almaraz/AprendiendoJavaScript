@@ -5,10 +5,10 @@
 }
 
 html,body{
-  background-color: rgb(112, 11, 11);
+  background-color: rgb(6, 0, 88);
 }
 .logo{
-  height: 160px;
+  height: 260px;
 }
 .App{
   display: flex;
